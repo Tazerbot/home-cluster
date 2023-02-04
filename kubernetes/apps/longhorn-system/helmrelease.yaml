@@ -9,10 +9,10 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: longhorn-charts
+      chart: longhorn
       version: 1.4.0
       sourceRef:
-        kind: HelmRepository
+        kind: GitRepository
         name: longhorn
         namespace: flux-system
       interval: 5m
