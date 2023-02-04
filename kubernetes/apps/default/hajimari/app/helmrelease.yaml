@@ -28,7 +28,8 @@ spec:
   values:
     hajimari:
       title: Apps
-      darkTheme: espresso
+      darkTheme: tron
+      lightTheme: tron
       alwaysTargetBlank: true
       showGreeting: false
       showAppGroups: false
@@ -40,6 +41,9 @@ spec:
       namespaceSelector:
         matchNames:
           - default
+          - flux-system
+          - montioring
+          - kube-system
     ingress:
       main:
         enabled: true
