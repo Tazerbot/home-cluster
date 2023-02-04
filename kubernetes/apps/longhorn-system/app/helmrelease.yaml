@@ -22,13 +22,11 @@ spec:
       defaultClassReplicaCount: 2
       reclaimPolicy: Retain
     defaultSettings:
-      createDefaultDiskLabeledNodes: true
-      defaultDataLocality: best-effort
-      nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
-      concurrentAutomaticEngineUpgradePerNodeLimit: 1
       storageMinimalAvailablePercentage: 10
-      defaultReplicaCount: 2
-      defaultLonghornStaticStorageClass: longhorn
+      # backupTarget: nfs://${SVC_NAS_ADDR}:/volume1/backups/longhorn
+      # backupstorePollInterval: 1800
+      nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
+      defaultDataLocality: best-effort
     ingress:
       enabled: true
       host: "longhorn.${SECRET_DOMAIN}"
