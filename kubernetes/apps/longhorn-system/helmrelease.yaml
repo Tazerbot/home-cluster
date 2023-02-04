@@ -12,8 +12,8 @@ spec:
       chart: longhorn
       version: 1.4.0
       sourceRef:
-        kind: GitRepository
-        name: longhorn
+        kind: HelmRepository
+        name: longhorn-charts
         namespace: flux-system
       interval: 5m
   values:
