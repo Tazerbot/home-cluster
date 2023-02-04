@@ -43,6 +43,7 @@ spec:
           - default
           - flux-system
           - montioring
+          - longhorn-system
           - kube-system
     ingress:
       main:
