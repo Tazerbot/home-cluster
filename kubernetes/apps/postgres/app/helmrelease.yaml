@@ -28,13 +28,15 @@ spec:
       tag: "15.1.0"
     primary:
       persistence:
-        enabled: true
-        type: pvc
-        mountPath: /var/lib/pgsql/data
-        storageClass: longhorn
-        accessMode: ReadWriteOnce
-        size: 5Gi
-        retain: true
+        config:
+          enabled: true
+          type: pvc
+
+          mountPath: /var/lib/pgsql/data
+          storageClass: longhorn
+          accessMode: ReadWriteOnce
+          size: 5Gi
+          retain: true
     metrics:
       enabled: true
       serviceMonitor:
