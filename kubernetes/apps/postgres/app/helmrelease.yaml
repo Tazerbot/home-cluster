@@ -29,7 +29,12 @@ spec:
     primary:
       persistence:
         enabled: true
-        existingClaim: postgresql-data
+        type: pvc
+        mountPath: /var/lib/pgsql/data
+        storageClass: longhorn
+        accessMode: ReadWriteOnce
+        size: 5Gi
+        retain: true
     metrics:
       enabled: true
       serviceMonitor:
