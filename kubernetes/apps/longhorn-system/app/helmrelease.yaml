@@ -5,7 +5,6 @@ metadata:
   name: longhorn
   namespace: longhorn-system
 spec:
-  releaseName: longhorn
   interval: 5m
   chart:
     spec:
@@ -13,20 +12,15 @@ spec:
       version: 1.4.0
       sourceRef:
         kind: HelmRepository
-        name: longhorn
+        name: longhorn-charts
         namespace: flux-system
       interval: 5m
   values:
     persistence:
-      defaultClass: true
       defaultClassReplicaCount: 2
-      reclaimPolicy: Retain
     defaultSettings:
-      storageMinimalAvailablePercentage: 10
-      # backupTarget: nfs://${SVC_NAS_ADDR}:/volume1/backups/longhorn
-      # backupstorePollInterval: 1800
-      nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
-      defaultDataLocality: best-effort
+      defaultReplicaCount: 2
+    pspEnable: false
     ingress:
       enabled: true
       host: "longhorn.${SECRET_DOMAIN}"
