@@ -56,9 +56,6 @@ spec:
               - *host
 
     persistence:
-      config:
-        enabled: true
-        existingClaim: jellyfin-config
       hostpath:
         path: /mnt/torrents
         mountPath: /media
