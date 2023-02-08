@@ -53,7 +53,7 @@ spec:
       config:
         enabled: true
         existingClaim: jellyfin-config
-      media:
+      data:
         enabled: true
         type: nfs
         server: ${NAS_ADDR}
