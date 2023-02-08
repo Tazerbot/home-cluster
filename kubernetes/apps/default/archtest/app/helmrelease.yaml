@@ -17,7 +17,7 @@ spec:
   interval: 30m
   values:
     image:
-      repository: archlinux
+      repository: ghcr.io/onedr0p/archlinux
       tag: latest
 
     persistence:
