@@ -36,7 +36,11 @@ spec:
         tls:
           - hosts:
               - *host
-
+    service:
+      main:
+        ports:
+          http:
+            port: &port 8080
     persistence:
       data:
         enabled: true
