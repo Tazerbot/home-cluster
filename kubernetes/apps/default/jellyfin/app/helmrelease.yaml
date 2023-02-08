@@ -53,10 +53,12 @@ spec:
       config:
         enabled: true
         existingClaim: jellyfin-config
-      data:
-        hostPath:
-          path: /mnt/torrents
-          mountPath: /media
+      media:
+        enabled: true
+        type: nfs
+        server: ${NAS_ADDR}
+        path: /tank/torrents
+        mountPath: /media
       transcode:
         enabled: true
         type: emptyDir
