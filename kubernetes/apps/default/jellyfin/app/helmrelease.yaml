@@ -56,8 +56,8 @@ spec:
       default:
         customVolume:
           hostPath:
-          path: /mnt/torrents
-          mountPath: /media
+            path: /mnt/torrents
+            mountPath: /media
       transcode:
         enabled: true
         type: emptyDir
