@@ -53,7 +53,7 @@ spec:
       config:
         enabled: true
         existingClaim: jellyfin-config
-      default:
+      data:
         hostPath:
           path: /mnt/torrents
           mountPath: /media
