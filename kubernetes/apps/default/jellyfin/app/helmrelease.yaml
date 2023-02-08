@@ -53,9 +53,11 @@ spec:
       config:
         enabled: true
         existingClaim: jellyfin-config
-      hostpath:
-        path: /mnt/torrents
-        mountPath: /media
+      default:
+        customVolume:
+          hostPath:
+          path: /mnt/torrents
+          mountPath: /media
       transcode:
         enabled: true
         type: emptyDir
