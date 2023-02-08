@@ -51,8 +51,8 @@ spec:
       data:
         enabled: true
         mountPath: /storage/media
-        path: /tank/torrents
-        server: 10.0.0.100
+        path: ${MEDIA_PATH}
+        server: ${NAS_ADDR}
         type: nfs
       transcode:
         enabled: true
