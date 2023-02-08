@@ -17,7 +17,7 @@ spec:
   interval: 30m
   values:
     image:
-      repository: archlinux/archlinux
+      repository: archlinux
       tag: latest
 
     persistence:
