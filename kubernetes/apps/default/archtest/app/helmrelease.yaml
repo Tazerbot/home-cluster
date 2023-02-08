@@ -17,7 +17,7 @@ spec:
   interval: 30m
   values:
     image:
-      repository: ghcr.io/onedr0p/archlinux
+      repository: docker.io/archlinux
       tag: latest
 
     ingress:
