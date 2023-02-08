@@ -28,6 +28,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    nodeSelector:
+      speed: quick
     image:
       repository: itzg/minecraft-server
       tag: 2022.16.0-java17
