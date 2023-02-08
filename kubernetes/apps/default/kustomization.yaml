@@ -7,3 +7,4 @@ resources:
   - ./hajimari/ks.yaml
   - ./libreddit/ks.yaml
   - ./jellyfin/ks.yaml
+  - ./minecraft-server/ks.yaml
