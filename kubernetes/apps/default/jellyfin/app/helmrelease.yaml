@@ -53,7 +53,7 @@ spec:
       config:
         enabled: true
         existingClaim: jellyfin-config
-      nfs-nas-media:
+      data:
         enabled: true
         mountPath: /storage/media
         path: /tank/torrents
