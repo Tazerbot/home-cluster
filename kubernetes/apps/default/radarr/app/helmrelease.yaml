@@ -35,8 +35,6 @@ spec:
       tag: 4.4.1.6926@sha256:f5ffec33b203f9052caf1cf484b1d30f9dc0bc3268c8a439b45e67c3c4dbe5b2
     env:
       TZ: America/New_York
-      PUSHOVER_DEBUG: "false"
-      PUSHOVER_APP_URL: &host "radarr.${SECRET_DOMAIN}"
       RADARR__INSTANCE_NAME: Radarr
       RADARR__PORT: &port 80
       RADARR__APPLICATION_URL: &host "radarr.${SECRET_DOMAIN}"
