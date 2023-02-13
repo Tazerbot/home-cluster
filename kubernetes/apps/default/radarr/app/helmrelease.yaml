@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: qbittorrent
+  name: radarr
   namespace: default
 spec:
   interval: 15m
@@ -31,45 +31,38 @@ spec:
       annotations:
         reloader.stakater.com/auto: "true"
     image:
-      repository: ghcr.io/onedr0p/qbittorrent
-      tag: 4.5.0@sha256:d24fec03738509fc17b0de5d48690f7b59c6590788868cf4e367a1253d52dd8b
+      repository: ghcr.io/onedr0p/radarr-develop
+      tag: 4.4.1.6926@sha256:f5ffec33b203f9052caf1cf484b1d30f9dc0bc3268c8a439b45e67c3c4dbe5b2
     env:
       TZ: America/New_York
-      QBITTORRENT__PORT: &port 80
-      QBITTORRENT__BT_PORT: &port-bt 50413
+      PUSHOVER_DEBUG: "false"
+      PUSHOVER_APP_URL: &host "radarr.${SECRET_DOMAIN}"
+      RADARR__INSTANCE_NAME: Radarr
+      RADARR__PORT: &port 80
+      RADARR__APPLICATION_URL: &host "radarr.${SECRET_DOMAIN}"
+      RADARR__LOG_LEVEL: info
+    envFrom:
+      - secretRef:
+          name: radarr-secret
     service:
       main:
         ports:
           http:
             port: *port
-      bittorrent:
-        enabled: true
-        type: LoadBalancer
-        externalIPs: ["${SVC_QBITTORRENT_ADDR}"]
-        ports:
-          bittorrent:
-            enabled: true
-            port: *port-bt
-            protocol: TCP
-            targetPort: *port-bt
-        externalTrafficPolicy: Local
     ingress:
       main:
         enabled: true
         ingressClassName: nginx
         annotations:
           nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_hide_header "x-webkit-csp";
-            proxy_hide_header "content-security-policy";
-            proxy_hide_header "X-Frame-Options";
             proxy_set_header Accept-Encoding "";
-            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.devbu.io/css/base/qbittorrent/nord.css"></head>';
+            sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.devbu.io/css/base/radarr/nord.css"></head>';
             sub_filter_once on;
           nginx.ingress.kubernetes.io/whitelist-source-range: |
             10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-          hajimari.io/icon: mdi:download
+          hajimari.io/icon: mdi:filmstrip
         hosts:
-          - host: &host "qb.${SECRET_DOMAIN}"
+          - host: *host
             paths:
               - path: /
                 pathType: Prefix
@@ -82,10 +75,16 @@ spec:
       fsGroup: 568
       fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups: [10000]
+    volumeClaimTemplates:
+      - name: config
+        mountPath: /config
+        accessMode: ReadWriteOnce
+        size: 15Gi
+        storageClass: ceph-block
     persistence:
       config:
         enabled: true
-        existingClaim: qb-config
+        existingClaim: rdarr-config
       data:
         enabled: true
         mountPath: /media
@@ -97,4 +96,4 @@ spec:
         cpu: 10m
         memory: 250Mi
       limits:
-        memory: 6000Mi
+        memory: 2000Mi

@@ -9,3 +9,4 @@ resources:
   - ./jellyfin/ks.yaml
   - ./minecraft-server/ks.yaml
   - ./qbittorrent/ks.yaml
+  - ./radarr/ks.yaml
