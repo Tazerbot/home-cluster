@@ -6,5 +6,5 @@ resources:
   - ./helmrelease.yaml
 labels:
   - pairs:
-      app.kubernetes.io/name: radarr
-      app.kubernetes.io/instance: radarr
+    app.kubernetes.io/name: radarr
+    app.kubernetes.io/instance: radarr
